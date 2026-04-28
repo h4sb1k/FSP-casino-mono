@@ -1,0 +1,218 @@
+.instruction-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  display: grid;
+  place-items: center;
+  padding: clamp(8px, 2vw, 20px);
+  animation: instructionRootIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes instructionRootIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.instruction-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: rgba(15, 23, 42, 0.48);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  cursor: pointer;
+}
+
+.instruction-modal-shell {
+  position: relative;
+  z-index: 1;
+  width: min(96vw, 1180px);
+  height: min(92vh, 880px);
+  max-height: 92vh;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 10px;
+  padding: clamp(12px, 2vw, 20px) clamp(14px, 2.4vw, 22px) 16px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #ffffff 0%, var(--bg-felt-soft) 100%);
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.28);
+  overflow: hidden;
+  animation: instructionShellIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes instructionShellIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.instruction-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text-soft);
+  display: grid;
+  place-items: center;
+  z-index: 2;
+}
+
+.instruction-modal-close:hover {
+  background: var(--panel-soft);
+  color: var(--text);
+}
+
+.instruction-modal-title {
+  margin: 0 44px 0 0;
+  font-size: clamp(1rem, 2.1vw, 1.25rem);
+  padding-right: 8px;
+}
+
+.instruction-modal-intro {
+  max-height: 22vh;
+  overflow: auto;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+}
+
+.instruction-modal-intro ol {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 4px;
+}
+
+.instruction-modal-note {
+  margin: 8px 0 0;
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+.instruction-modal-slider {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(6px, 1.5vw, 14px);
+}
+
+.instruction-modal-slide-viewport {
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.instruction-modal-slide-track {
+  display: flex;
+  width: calc(var(--instruction-slide-count, 4) * 100%);
+  transition: transform 0.55s cubic-bezier(0.25, 0.8, 0.22, 1);
+  will-change: transform;
+}
+
+.instruction-modal-slide-track.is-instant {
+  transition: none;
+}
+
+.instruction-modal-slide-page {
+  flex: 0 0 calc(100% / var(--instruction-slide-count, 4));
+  min-width: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 8px;
+  align-content: center;
+  justify-items: center;
+  padding: 0 3px;
+  box-sizing: border-box;
+}
+
+.instruction-modal-nav {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--gold-strong);
+  background: linear-gradient(180deg, var(--gold) 0%, var(--gold-strong) 100%);
+  color: #1a1a1a;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.instruction-modal-nav:hover {
+  filter: brightness(1.04);
+}
+
+.instruction-modal-img {
+  width: 100%;
+  max-width: 100%;
+  height: min(58vh, 520px);
+  object-fit: contain;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--panel-soft);
+}
+
+.instruction-modal-caption {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.instruction-modal-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.instruction-modal-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: none;
+  background: #cbd5e1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.instruction-modal-dots button.active {
+  background: var(--gold-strong);
+  transform: scale(1.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .instruction-modal-slide-track {
+    transition: none;
+  }
+  .instruction-modal-root,
+  .instruction-modal-shell {
+    animation: none;
+  }
+}

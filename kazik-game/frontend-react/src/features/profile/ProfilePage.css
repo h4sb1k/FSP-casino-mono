@@ -1,0 +1,360 @@
+.pr-container {
+  position: relative;
+  min-height: calc(100vh - 80px); /* header height off */
+  background: transparent;
+  padding: 60px 20px 40px;
+  z-index: 1;
+}
+
+/* Background gradient blobs based on the screenshot */
+.pr-bg-blobs {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.pr-blob-1 {
+  position: absolute;
+  right: -50px;
+  top: 30%;
+  width: 200px;
+  height: 200px;
+  background: #e52e71;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  transform: rotate(45deg);
+  filter: blur(10px);
+}
+
+.pr-blob-2 {
+  position: absolute;
+  right: 10%;
+  bottom: -100px;
+  width: 400px;
+  height: 300px;
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  border-radius: 30% 70% 50% 50% / 30% 30% 70% 70%;
+  transform: rotate(-15deg);
+  filter: blur(5px);
+}
+
+.pr-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 30px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .pr-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Common Card Style */
+.pr-card {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  padding: 35px;
+  position: relative;
+}
+
+/* Card 1: Left Profile */
+.pr-left {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Avatar block */
+.pr-avatar-wrap {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #f8f9fa 0%, #eef1f5 100%);
+  border-radius: 16px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 130px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+}
+
+/* Header in Left card */
+.pr-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 25px;
+}
+.pr-title-row h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  color: #222;
+}
+.pr-title-row .pr-sub {
+  font-size: 12px;
+  color: #999;
+  text-align: right;
+  line-height: 1.4;
+}
+
+/* Info fields */
+.pr-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+.pr-field:last-of-type {
+  border-bottom: none;
+}
+.pr-field-val {
+  font-weight: 600;
+  color: #444;
+  font-size: 15px;
+}
+.pr-field-label {
+  color: #888;
+  font-size: 14px;
+}
+
+/* SMS Toggle */
+.pr-toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 0 35px;
+}
+.pr-toggle-label {
+  color: #ff6b4a; /* Orange text like screenshot */
+  font-weight: 600;
+  font-size: 14px;
+}
+.pr-toggle {
+  width: 44px;
+  height: 24px;
+  background: #00d26a; /* Green */
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.pr-toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+.pr-toggle.off {
+  background: #e0e0e0;
+}
+.pr-toggle.off::after {
+  transform: translateX(-20px);
+}
+
+/* Save Button */
+.pr-btn-save {
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 14px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(229, 46, 113, 0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 160px;
+  margin: 0 auto;
+  display: block;
+}
+.pr-btn-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(229, 46, 113, 0.35);
+}
+
+/* Right side container */
+.pr-right {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Card Header (for Accounts and Bills) */
+.pr-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f2f2f2;
+}
+.pr-card-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+.pr-card-header-action {
+  background: #f4f5f7;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #666;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.pr-card-header-action:hover {
+  background: #e9eaec;
+}
+
+/* Account row */
+.pr-acc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.pr-acc-row:last-child {
+  margin-bottom: 0;
+}
+.pr-acc-info .pr-acc-title {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 6px;
+}
+.pr-acc-info .pr-acc-val {
+  font-size: 20px;
+  font-weight: 700;
+  color: #aaa;
+}
+.pr-acc-info .pr-acc-val.active {
+  color: #222;
+}
+
+.pr-btn-pill {
+  padding: 10px 24px;
+  border-radius: 24px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.pr-btn-pill:hover {
+  transform: translateY(-2px);
+}
+.pr-btn-pill.orange-pink {
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  box-shadow: 0 6px 15px rgba(229, 46, 113, 0.25);
+}
+.pr-btn-pill.green {
+  background: linear-gradient(90deg, #00d26a, #00e676);
+  box-shadow: 0 6px 15px rgba(0, 210, 106, 0.25);
+}
+
+/* Bill / History list */
+.pr-history-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+.pr-history-list::-webkit-scrollbar {
+  width: 6px;
+}
+.pr-history-list::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
+.pr-history-list::-webkit-scrollbar-track {
+  background: #f4f5f7;
+}
+
+/* Bill / History row */
+.pr-bill-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #f8f9fa;
+}
+.pr-bill-row:last-child {
+  border-bottom: none;
+}
+.pr-bill-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.pr-bill-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+.pr-bill-dot.green { background: #00d26a; box-shadow: 0 0 10px rgba(0,210,106,0.5); }
+.pr-bill-dot.red { background: #ff3b3b; box-shadow: 0 0 10px rgba(255,59,59,0.5); }
+
+.pr-bill-title {
+  font-weight: 700;
+  color: #333;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.pr-bill-sub {
+  font-size: 12px;
+  color: #999;
+}
+
+.pr-bill-badge {
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  min-width: 110px;
+  text-align: center;
+}
+.pr-bill-badge.paid {
+  background: linear-gradient(90deg, #00d26a, #00e676);
+  box-shadow: 0 4px 12px rgba(0, 210, 106, 0.25);
+}
+.pr-bill-badge.unpaid {
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  box-shadow: 0 4px 12px rgba(229, 46, 113, 0.25);
+}
+
+/* Back button overlay */
+.pr-back-btn {
+  position: absolute;
+  top: -45px;
+  left: 0;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pr-back-btn:hover {
+  background: #fff;
+  transform: translateX(-5px);
+}
