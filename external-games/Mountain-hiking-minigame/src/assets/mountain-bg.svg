@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6f8fb4"/>
+      <stop offset="100%" stop-color="#2a4568"/>
+    </linearGradient>
+    <linearGradient id="mountainA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7389a0"/>
+      <stop offset="100%" stop-color="#3f5872"/>
+    </linearGradient>
+    <linearGradient id="mountainB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#62788e"/>
+      <stop offset="100%" stop-color="#354b63"/>
+    </linearGradient>
+    <linearGradient id="snow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f3f8ff"/>
+      <stop offset="100%" stop-color="#d9e6f7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="700" fill="url(#sky)"/>
+
+  <path d="M0 700 L280 420 L430 560 L620 320 L780 540 L1040 260 L1240 520 L1420 360 L1600 700 Z" fill="url(#mountainA)"/>
+  <path d="M0 700 L200 520 L350 620 L560 440 L750 660 L980 420 L1180 640 L1340 500 L1600 700 Z" fill="url(#mountainB)" opacity="0.9"/>
+
+  <path d="M585 380 L620 320 L665 395 L640 390 Z" fill="url(#snow)"/>
+  <path d="M1000 320 L1040 260 L1085 340 L1045 332 Z" fill="url(#snow)"/>
+  <path d="M1380 410 L1420 360 L1455 430 L1428 426 Z" fill="url(#snow)"/>
+</svg>
